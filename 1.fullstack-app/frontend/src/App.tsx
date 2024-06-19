@@ -4,7 +4,7 @@ import axios from "axios";
 
 // const url = 'http://localhost:4000/users'
 const url =
-  "http://ec2-13-124-14-125.ap-northeast-2.compute.amazonaws.com/:4000/users";
+  "http://ec2-13-124-14-125.ap-northeast-2.compute.amazonaws.com:4000/users";
 
 interface User {
   userName: string;
