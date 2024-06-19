@@ -1,9 +1,10 @@
-import { FormEvent, useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
+import { FormEvent, useEffect, useState } from "react";
+import "./App.css";
+import axios from "axios";
 
 // const url = 'http://localhost:4000/users'
-const url = 'http://ec2-3-36-87-126.ap-northeast-2.compute.amazonaws.com:4000/users'
+const url =
+  "http://ec2-13-124-14-125.ap-northeast-2.compute.amazonaws.com/:4000/users";
 
 interface User {
   userName: string;
@@ -11,7 +12,7 @@ interface User {
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   const loadUsers = async () => {
     try {
@@ -20,29 +21,27 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await axios.post(url, { userName });
-      setUserName('');
+      setUserName("");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
+          type="text"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <button type='submit'>
-          유저 추가
-        </button>
+        <button type="submit">유저 추가</button>
       </form>
 
       <br />
@@ -52,17 +51,14 @@ function App() {
       </div>
 
       <br />
-      
+
       <ul>
         {users.map(({ userName }, i) => (
-          <li key={i}>
-            {userName}
-          </li>
+          <li key={i}>{userName}</li>
         ))}
       </ul>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
